@@ -1,0 +1,103 @@
+{% extends 'staffIndex.html' %}
+{% block content %}
+
+{% load static %}
+
+<style>
+    .serviceForm{
+        background-color: #72af84;
+        width: 820px;
+        height: 890px;
+        align-items:center;
+        text-align: left;
+        justify-content: center;
+        padding:10px;
+        
+    }
+    .serviceForm label{
+        letter-spacing: 2px;
+    }
+
+    .serviceForm fieldset{
+        line-height: 100px;
+        padding:5px;
+        margin: 2px auto;
+        margin-bottom: 30px;
+        height: 864px;
+
+    }
+
+    .serviceForm input{
+        background-color: #72af8400;
+        width: 500px;
+        height: 70px;
+        margin-left: 20px;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .serviceForm input[type=file]{
+        border-radius: 0;
+        margin-left: 225px;
+    }
+
+    .serviceForm input[type=date]{
+        background: #00000030;
+        color: white;
+        height: 36px;
+        width: 187px;
+        margin-left: -198px;
+    }
+
+    .serviceForm button{
+        width: 250px;
+        height: 50px;
+        background: black;
+        color: white;
+        border-radius: 29px;
+        margin: -20px 265px;
+    }
+</style>
+
+<div class="box-container">
+    <div class="report-header">
+					<h1 class="recent-Articles">Add Online Services</h1>
+					
+				</div>
+    <div class="report-body">
+        <form action="{% url 'addNewOnlineServices' %}" method="POST" enctype="multipart/form-data" class="serviceForm">
+            {% csrf_token %}
+            <fieldset>
+                <label for="service_name">Name of the Service</label> 
+                <input type="text" name="service_name" id="service_name">
+                <br>
+                <label for="Description">Description</label>
+                <input type="text" name="Description" id="Description" style="margin-left: 8em;">
+                <br>
+                <label for="Scheme">Scheme</label>
+                <input type="text" name="Scheme" id="Scheme" style="margin-left: 141px;">
+                <br>
+                <label for="Eligibility">Service Eligibility</label>
+                <input type="text" name="Eligibility" id="Eligibility" style="margin-left: 50px;">
+                <br>
+                <label for="apply">How to Apply</label>
+                <input type="text" name="apply" id="apply" style="margin-left: 90px;">
+                <br>
+                <label for="contactEnd">Whom to Contact</label>
+                <input type="text" name="contactEnd" id="contactEnd" style="margin-left: 46px;">
+                <br>
+                <label for="apply_url">Online URL</label>
+                <input type="url" name="apply_url" id="apply_url" style="margin-left: 116px;">
+                
+                <input type="file" name="image" id="image"> 
+                <input type="date" name="end_date" id="end_date" >
+                
+                <br>
+                <button type="submit">Add</button>
+                <br>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

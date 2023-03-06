@@ -1,0 +1,67 @@
+{% load static %}
+
+{% block content %}
+
+<head>
+<link type="text/css" rel="stylesheet" href="{% static 'css/nav.css' %}">
+<link rel="shortcut icon" href="{% static 'images/kisan.png' %}" type="image/x-icon">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<style>
+    .navbar{
+    background:url("{% static 'images/banner.jpg' %}");
+    background-position: center;
+    background-repeat:no-repeat;
+    background-size: cover;
+    opacity:0.9;
+    
+    }
+</style>
+</head>
+
+
+
+<nav class="navbar">
+    <div class="nav-row">
+        <div class="logoImage">
+           <a href="{% url 'index' %}">
+            <img class="logo" src="{% static 'images/kisan.png' %}" alt=""> 
+           </a>
+        </div>
+        <div class="navlinks">
+            <ul>
+                <li><a href="{% url 'index' %}">Home</a></li>
+                <li><a href="{% url 'services' %}">Services</a></li>
+                <li><a href="{% url 'schemes' %}">Schemes</a></li>
+                <li><a href="{% url 'administration' %}">Administration</a></li>
+                <li><a href="{% url 'about_us' %}">About Us</a></li>
+                <li>
+                    <a href="{% url 'signup_page' %}">
+                        <span class="material-symbols-outlined">
+                          person
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="heading">
+        <h1>E-KISAN</h1>
+        <h2>Department of Agriculture Development and Farmers' Welfare</h2>
+        <h3>Kerala</h3>
+    </div>
+</nav>
+
+<section class="Home-Content">
+    <div class="department">
+        <h2>ABOUT THE DEPARTMENT</h2>
+        <p>The history of the Department of agriculture in Kerala also depicts the agrarian history of the State. The Department of Agriculture was started functioning in the erstwhile Travancore on 27th May 1908. The Department in its present set up started functioning from 1987 for the overall development of agriculture in the State.The department visions to Attain self sufficiency in food production through enhanced agricultural productivity of agricultural commodities so as to make agriculture a sustainable and viable vocation providing livelihood support.We aims at Safeguarding the interest of farmers, ensure food and nutritional security and support Kerala’s agricultural economy, achieve targeted growth rate for agriculture sector by successful implementation of various schemes, protect farmers from risk through risk management cover and from unfair and deceptive business practices, set up investment in agriculture, ensure the safety of agricultural products by ensuring supply of quality agricultural inputs, conserve and protect the state’s agricultural and natural resources by promoting environmentally safe agricultural practices.<span class="view-more"><a href="#">view more...</a></span></p>
+    </div>
+
+</section>
+
+{% endblock %}
+
+<br><br><br><br><br><br>
+{% include 'footer.html' %}

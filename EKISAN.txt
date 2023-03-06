@@ -1,0 +1,210 @@
+PROJECT NAME : EKISAN
+----------------------------------------------------------------------------------------
+PROJECT CREATION:
+    PyCharm > File > New Project > select project directory > name it as EKISAN > create
+----------------------------------------------------------------------------------------
+DJANGO INSTALLATION:
+    Open project EKISAN > Terminal :
+
+    if virtual environment is not activated:
+        Terminal : venv\Scripts\activate
+         (if not activated:
+          > virtuanenv venv > Enter
+         venv\Scripts\activate)
+
+    django install:
+        Terminal : pip install django > Enter
+
+----------------------------------------------------------------------------------------------
+Project Creation:
+
+    command :django-admin startproject projectname .
+
+    Terminal : django-admin startproject EKISAN .
+
+    It will create a project directory under the project folder EKISAN which contain some default
+    files :
+          EKISAN: - Project Folder
+             EKISAN - Project Directory
+                  - __init__.py : Constructor file
+                  - asgi.py     : asynchronous gateway interface : for server connection
+                  - wsgi.py     : web server gateway interface : sever connection
+                  - settings.py : complete setting and connection of the project - project
+                                  configuration file
+                  - urls.py     : contain complete path of the project
+
+             - manage.py : django commandline utility file to run the project,automatically
+                           created when project is created.
+
+-----------------------------------------------------------------------------------------------
+
+To run the project:
+    open terminal:
+        command : python manage.py runserver   /   py manage.py runserver
+
+    It will create a link to open the webpage, click on the link .
+        Starting development server at http://127.0.0.1:8000/
+
+-----------------------------------------------------------------------------------------------
+ctrl + c - to quit terminal
+
+-----------------------------------------------------------------------------------------------
+APP CREATION:
+    Open Terminal:
+        command : py manage.py startapp appname
+
+    Terminal : py manage.py startapp KISAN_APP
+
+    It will create app directory which contains :
+        KISAN_APP: app directory
+            - __init__py
+            - admin.py : Admin panel, we want to register tables(models) here.
+            - apps.py  : KISAN_APP configuration file
+            - models.py : Folder which deals with databases, we want to create tables under
+                this files.
+            - tests.py :file for software testing
+            - views.py : deals with backend functions and template connection
+
+------------------------------------------------------------------------------------------------
+DB.sqlite3 :
+    default django database, used to handle data
+
+    to open it in sqlite :
+        go to https://sqlitebrowser.org/ > downloads >
+            DB Browser for SQLite - Standard installer for 64-bit Windows > download and install.
+
+    go to project folder > right click on db.sqlite3 > open with > Choose another app from PC >
+            open DB Browser for SQLite > select DB Browser for SQLite application > Open
+
+-------------------------------------------------------------------------------------------------
+migrations :
+    -   migrations are django's way of propagating changes you make to your models (adding field,
+        deleting any data, renaming etc) into your database schema.
+    -   migrations are generated per app,and are stored in Appname/migrations directory.
+    -   migrations are initially done to get django's default tables into our project.
+    -   run the project after migrations
+
+    - commands for migration:
+        step1 : py manage.py makemigrations
+            : to list all the changes
+        step2 : py manage.py migrate
+            : to migrate all changes into database schema
+    - run the project:
+        py manage.py runserver
+
+-------------------------------------------------------------------------------------------------
+
+SUPER USER CREATION: - SITE ADMIN CREATION:
+    - superuser : site admin who has the ability to control the overall site actions.
+    - command:
+        py manage.py createsuperuser
+
+    - save superuser details:
+        Username: ekisan@2022
+        Email address: ekisan@gmail.com
+        Password: kisansite@123
+    - run the project
+        py manage.py runserver
+
+    - To get django default admin page :
+        http://127.0.0.1:8000/admin > enter
+
+        Login with admin username and password ,it will open django admin panel
+    - django admin has the abilities:
+        - view all tables and table data
+        - admin can update or delete data values
+        - change password option
+        - option to view the website
+
+------------------------------------------------------------------------------------------------
+# setting Indian Timezone
+    - EKISAN>settings.py:
+        - go to internationalization section in settings.py
+        - comment UTS timezone
+        - Add Indian Timezone as:
+
+            LANGUAGE_CODE = "en-us"
+            TIME_ZONE = "Asia/Kolkata"
+            USE_I18N = True
+            USE_TZ = False
+            USE_L1ON = True
+------------------------------------------------------------------------------------------------
+
+URL PATH CONFIGURATION
+    - setting app url in main project directory urls.py
+        - open EKISAN>urls.py:
+
+            from django.contrib import admin
+            from django.urls import path, include  # import include also
+
+            urlpatterns = [
+                path("admin/", admin.site.urls),
+                path('', include('KISAN_APP.urls')) # setting KISAN_APP urls
+            ]
+    -------------------------------------------------------------------------------------------------
+    - setting app urls.py:
+        - create urls.py under your app
+            - Right click on Appname(KISAN_APP) > new > Python file >urls.py
+
+            - Open KISAN_APP>urls.py :
+
+                from django.urls import path
+                from . import views
+                urlpatterns = [
+                    #path('', views.home, name='home')
+                    path('', views.home, name='home')
+                ]
+    -----------------------------------------------------------------------------------------------
+    - open KISAN_APP>views.py:
+        - create function for home page:
+
+            from django.shortcuts import render
+
+            # Create your views here.
+
+            def home(request):
+                return render(request, 'home.html')
+------------------------------------------------------------------------------------------------
+
+Create Template Folder:
+    - Right click on Project Folder EKISAN(not project directory)
+        > New > Directory > Save the directory as Templates
+
+    - Add Templates directory under settings.py:
+        EKISAN>settings.py>
+
+
+            TEMPLATES = [
+                {
+                    "BACKEND": "django.template.backends.django.DjangoTemplates",
+                    "DIRS": ['Templates'], # Templates directory name added here
+                    "APP_DIRS": True,
+                    "OPTIONS": {
+                        "context_processors": [
+                        ...................
+                    },
+                },
+            ]
+
+---------------------------------------------------------------------------------------------------
+
+Creating  home.html:
+    - Templates > right click > new > html file >home.html:
+
+        <!DOCTYPE html>
+        <html lang="en">
+        <head>
+            <meta charset="UTF-8">
+            <title>Home</title>
+        </head>
+        <body>
+            <center>
+                <h1>Welcome To E-Kisan</h1>
+            </center>
+        </body>
+        </html>
+
+    - run the project:
+        py manage.py runserver
+
+---------------------------------------------------------------------------------------------------

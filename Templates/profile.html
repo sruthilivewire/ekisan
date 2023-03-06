@@ -1,0 +1,147 @@
+{% extends 'userIndex.html' %}
+{% load static %}
+
+{% block content %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+       body{
+        display: grid;
+        place-items: center;
+
+       } 
+        .navbar {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 181px;
+        }
+       .profile-section{
+        margin: 30px 0 30px 0;
+        box-shadow: 2px 3px 2px black;
+        border-radius: 23px;
+        width: 80%;
+        height: 600px;
+        display: flex;
+        flex-direction: row;
+    
+       }
+       .profile-card{
+        box-shadow: -3px 0px 1em rgb(5 47 17);
+        border-bottom-left-radius: 100px;
+        border-top-right-radius: 100px;
+        width: 35%;
+        height: 537px;
+        margin:35px 5px 5px 30px;
+        display:block;
+        text-align: center;
+        align-items: center;
+        
+       }
+       .profile-details{
+        box-shadow: -3px 0px 1em rgb(5 47 17);
+        border-bottom-left-radius: 100px;
+        border-top-right-radius: 100px;
+        width: 56%;
+        height: 537px;
+        margin:35px 5px 5px 30px;
+        display:block;
+        place-items: center;
+
+       }
+
+       .profile-details h3{
+        margin: 39px 172px;
+        font-size: 40px;
+        color: rgb(2, 28, 8);
+       }
+       .profile-details .pro-row{
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        margin-left: 190px;
+       }
+
+
+       .profile-section .pro-img{
+            margin: 68px;
+            width: 63%;
+            height: 250px;
+            
+            display: grid;
+            place-items: center;
+          
+       }
+       .profile-section .pro-pic{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+       }
+
+       .profile-section .pro-button{
+        width: 150px;
+        height: 44px;
+        border-radius: 23px;
+        margin: 44px 225px;
+        
+        border: none;
+        box-shadow: 2px 3px 2px rgb(2, 28, 2);
+        
+        background: linear-gradient(23deg,rgb(122 185 122),rgb(5, 28, 5));
+       }
+
+       .profile-section .pro-button a{
+        font-size: 18px;
+        color: rgb(250, 249, 246);
+        text-decoration: none;
+       }
+
+    </style>
+</head>
+<body>
+    <div class="profile-section">
+        <div class="profile-card">
+            {% for i in address %}
+            <div class="pro-img">
+                <img class="pro-pic" src="{{ i.image.url }}" alt="">
+            </div>
+            <h1>{{ user.first_name }} {{ user.last_name }}</h1>
+
+            <h3>{{ i.phone }}</h3>
+            {% endfor %}
+        </div>
+        <div class="profile-details">
+            <h3>Profile Details</h3>
+            <div class="pro-row">
+            
+                <div class="pro-col1">
+
+                    <h4>Name &emsp;&emsp;:</h4>
+                    <h4>Email &emsp;&emsp;:</h4>
+                    <h4>Address &emsp;:</h4>
+                    <br>
+                    <h4>Contact &emsp;&emsp;:</h4>
+                </div>
+                <div class="pro-col2">
+                     {% for i in address %}
+                    <h4>&emsp;&emsp;{{ user.first_name }} {{ user.last_name }}</h4>
+                    <h4>&emsp;&emsp;{{ user.email }}</h4>
+                    <address>&emsp;&emsp;{{ i.city }}, {{ i.land_mark }},
+                                    <br>
+                                    &emsp;&emsp;{{ i.district }}, {{ i.state }}
+                                    <br>
+                                    &emsp;&emsp; pin - {{ i.pin_code }}
+                                    </address></h4>
+                    <h4>&emsp;&emsp; {{ i.phone }}</h4>
+                    {% endfor %}
+                </div>
+            </div>
+            <button class="pro-button"> <a href="{% url 'update-profile' %}"> Update </a></button>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

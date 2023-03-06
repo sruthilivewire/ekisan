@@ -1,0 +1,113 @@
+{% extends 'userIndex.html' %}
+{% block content %}
+
+{% load static %}
+<style>
+    .box-container{
+        align-items:center;
+        text-align:center;
+        margin-top:3em;
+        height:800px;
+
+        position:relative;
+        }
+
+    table{
+        width: 90%;
+        height: 400px;
+        margin-left:5em;
+    }
+    table,tr,td,th{
+        border: 1px solid black;
+        border-collapse: collapse;
+    }
+    td,th{
+        padding: 3px;
+
+    }
+
+    .apply-now{
+        margin:3em;
+        width:160px;
+        height:50px;
+        background:black;
+        border-radius:10px;
+    }
+
+    .apply-now a{
+        text-decoration:none;
+        color:white;
+    }
+
+    .apply-now a:hover{
+        color: yellow;
+        font-size:20px;
+        }
+
+
+
+</style>
+ {% for i in data %}
+<div class="box-container">
+    <div class="report-header">
+					<h1 class="recent-Articles"></h1>
+					<a href="/deleteOnlineServices/{{ i.id }}">
+
+                    </a>
+				</div>
+    <div class="report-body">
+
+        <table class="table">
+
+            <thead>
+                <tr>
+                    <th>Name of the Service</th>
+                    <td>{{ i.ServiceName}}</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Description</th>
+                    <td>{{ i.Description }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Scheme</th>
+                    <td>{{ i.Scheme }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Eligibility</th>
+                    <td>{{ i.Eligibility }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">How To Apply</th>
+                    <td>{{ i.How_To_Apply }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Whom To Contact</th>
+                    <td>{{ i.Whom_To_Contact }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Online URL</th>
+                    <td>{{ i.URL }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Last Date</th>
+                    <td>{{ i.Last_Date }}</td>
+                </tr>
+
+
+            </tbody>
+            {% endfor %}
+        </table>
+
+        <center>
+            <button class="apply-now">
+                {% for i in data %}
+                <a href="/Apply_Services_User/{{ i.id }}">Apply Now</a>
+                {% endfor %}
+            </button>
+        </center>
+    </div>
+</div>
+
+{% endblock %}

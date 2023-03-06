@@ -1,0 +1,207 @@
+{% load static %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+.footer{
+    width: 100%;
+    height: 400px;
+    background: rgba(0,0,0,.7)url("{% static 'images/header1.jpg' %}");
+    background-blend-mode: darken;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+   
+    position: relative;
+    bottom: 0;
+}
+.footer-contents{
+    position: absolute;
+    margin: 25px 67px;
+    width: 90%;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+}
+.footer-contents .col1{
+    width : 40%;
+    height: 300px;
+    margin: 20px 2px;
+
+}
+.footer-contents .col2{
+    width : 30%;
+    height: 300px;
+    margin: 27px 2px;
+
+}
+.footer-contents .col3{
+    width : 30%;
+    height: 300px;
+    margin: 27px 2px;
+}
+
+.footer-contents .grid-row{
+    width: 71%;
+    height: 138px;
+    margin: 8px 65px;
+    display: flex;
+    flex-direction: row;
+}
+
+.footer-contents .img-grid{
+    width: 100%;
+    height: 133px;
+    margin: 2px 5px;
+
+}
+
+.footer-contents .img-grid img{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.footer-contents .col2 h2{
+    color: #ba81e3;
+}
+
+.footer-contents .col3 h2{
+    color: #ba81e3;
+}
+
+.footer-contents .contact{
+    margin: 0 19px;
+    color: white;
+    font-size: larger;
+}
+
+
+.footer-contents .social-links{
+    margin: 0 19px;
+    height: 60px;
+    width: 90%;
+
+}
+
+.fa {
+    padding: 10px;
+    font-size: 20px;
+    width: 20px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+    border-radius: 50%;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-youtube {
+  background: #bb0000;
+  color: white;
+}
+
+.fa-instagram {
+  background: linear-gradient(rgb(223, 45, 75),rgb(250, 196, 78));
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.footer-contents .col3 ul li{
+    line-height: 25px;
+    color: #ffffff;
+    list-style-type: none;
+}
+
+.footer-contents .col3 ul li::before{
+  content: "\00BB";
+}
+
+.footer-contents .col3 a{
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+
+</style>
+
+<footer class="footer">
+    <div class="footer-contents">
+        <div class="col1">
+            <div class="grid-row">
+                <div class="img-grid">
+                    <img src="{% static 'images/grid1.jpg' %}" alt="">
+                </div>
+                <div class="img-grid">
+                    <img src="{% static 'images/grid2.jpg' %}" alt="">
+                </div>
+            </div>
+            <div class="grid-row">
+                <div class="img-grid">
+                    <img src="{% static 'images/grid3.jpg' %}" alt="">
+                </div>
+                <div class="img-grid">
+                    <img src="{% static 'images/grid4.jpg' %}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="col2">
+            <h2>| Contact Us</h2>
+            <div class="contact">
+                <address>
+                    Bhavan, Thiruvananthapuram,
+                    <br>
+                    Kerala - 695033
+                    <br>
+                    email: cru.agridir@kerala.gov.in
+                </address>
+
+                <p>Phone: 0471-2304481, 0471-2304480</p>
+            </div>
+
+            <h2>| Social Links</h2>
+            <div class="social-links">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-twitter"></a>
+                <a href="#" class="fa fa-google"></a>
+                <a href="#" class="fa fa-youtube"></a>
+                <a href="#" class="fa fa-instagram"></a>
+                <a href="#" class="fa fa-pinterest"></a>
+            </div>
+        </div>
+        <div class="col3">
+            <h2>| important Links</h2>
+            <div class="about">
+                <ul>
+                    <li><a href="{% url 'about_us' %}"> About Site</a></li>
+                    <li><a href="{% url 'privacy_policy' %}"> Disclaimer</a></li>
+                    <li><a href="{% url 'privacy_policy' %}"> Terms of Use</a></li>
+                    <li><a href="{% url 'privacy_policy' %}"> Privacy Policy</a></li>
+                    <li><a href="{% url 'contact' %}"> Sitemap</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

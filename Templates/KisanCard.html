@@ -1,0 +1,84 @@
+{% extends 'userIndex.html' %}
+{% load static %}
+
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+
+        
+        .navbar {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 181px;
+        }
+        
+        .kisan-card{
+            margin: 0 auto;
+            width: 100%;
+            margin-top: 3em;
+            margin-bottom: 3em;
+            height: 1000px;
+            
+        }
+
+        .kisancard-banner{
+            margin: 0 auto;
+            width: 93%;
+            margin-top: 3em;
+            margin-bottom: 3em;
+            height: 350px;
+            background: url(/static/images/kisancard.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .banner-para{
+            font-size: 18px;
+            color: white;
+            margin-right: 5em;
+            padding-top: 5em;
+            margin-left: 43em;
+            text-align: center;
+        }
+        .kisancard-banner button{
+            float: right;
+            margin-right: 19em;
+            margin-top: 5em;
+            width: 170px;
+            height: 50px;
+            border-radius: 20px;
+            background-color: black;
+            color: white;
+            text-align: center;
+            justify-content: center;
+            box-shadow: rgb(203, 203, 211) 0px 8px 24px, rgba(152, 152, 171, 0.1) 0px 16px 56px, rgba(142, 142, 239, 0.1) 0px 24px 80px;
+        }
+
+        .kisancard-banner a{
+            color: white;
+            text-decoration: none;
+            font-size: larger;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <section class="kisan-card">
+        <div class="kisancard-banner">
+            <p class="banner-para">To meet out the short term credit requirements for cultivation of Crops, Post-harvest expenses</p>
+            <button><a href="{% url 'KisanCardForm' %}">Apply Now</a></button>
+        </div>
+        <div class="kisancard-para">
+
+        </div>
+    </section>
+</body>
+</html>
+
+{% endblock %}

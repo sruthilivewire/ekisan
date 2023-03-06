@@ -1,0 +1,119 @@
+{% extends 'adminIndex.html' %}
+{% block content %}
+
+{% load static %}
+<head>
+	<style>
+		.report-body .formContainer{
+			width: 100%;
+			height: 600px;
+			
+			display: flex;
+			flex-direction: row;
+
+		}
+		.report-body .formContainer .formimage{
+			width: 400px;
+			height: 580px;
+			background: url("{% static 'images/formpic.png' %}");
+			margin: 10px 0px 10px 10px;
+			background-size: contain;
+		}
+		.report-body .formContainer .formdata{
+			width: 700px;
+			height: 580px;
+			margin: 10px 10px 10px 0px;
+			background:#010c01;
+			color: white;
+			align-items: center;
+			text-align: center;
+			justify-content: center;
+		}
+		.report-body .formContainer .formdata form{
+
+			display:block;
+			width: 90%;
+			height: 600px;
+			margin:15px 30px 15px 30px ;
+			padding-bottom: 10px;
+			letter-spacing: 12px;
+    		line-height: 70px;
+		}
+
+		.formdata form input{
+			width: 210px;
+			height: 50px;
+			border-radius: 20px;
+			background: #010c0112;
+			text-align: center;
+			color:white;
+		}
+
+		.formdata form input[type=email]{
+			width: 430px;
+			margin-bottom: 22px;
+			margin-top: 10px ;
+		}
+		.formdata form input[type=file]{
+			border-radius:0px;
+		}
+
+		.reg-Button{
+			height: 50px;
+			width: 150px;
+			border-radius: 20px;
+			margin-bottom: 20px;
+		}
+		.reg-Button:hover{
+			background-color: rgb(201, 245, 200);
+		}
+
+	</style>
+</head>
+
+			<div class="report-container" style="margin-top: 0px;">
+				<div class="report-header">
+
+                        <h1 class="recent-Articles">Register</h1>
+
+				</div>
+
+				<div class="report-body">
+
+					<div class="formContainer">
+						<div class="formimage">
+
+						</div>
+						<div class="formdata">
+							<form action="{% url 'e_reg' %}" method="POST" enctype="multipart/form-data">
+								{% csrf_token %}
+								<fieldset>
+									<legend>Fill The Details</legend>
+									<input type="text" placeholder="Place" name="Place" id="Place" required>
+									<input type="text" name="Municipality" placeholder="Municipality" id="Municipality" required>
+									<br>
+									<input type="text" placeholder="Block Panchayath" name="Panchayath" id="Panchayath" required>
+									<input type="text" placeholder="District" name="District" id="District" required>
+									<br>
+									<input type="text" name="State" placeholder="State" id="State" required>
+									<input type="text" name="Country" placeholder="Country" id="Country" required>
+									<br>
+									<input type="text" name="pincode" placeholder="pincode" pattern="[0-9]{6}" maxlength="6" id="pincode" required>
+									<input type="tel" pattern="[0-9]{4}[-]{1}{0-9}[7]" name="Phone" placeholder="Phone" id="Phone" maxlength="12" required>
+									<br>
+									<input type="email" name="email" placeholder="email" id="email" required>
+									<br>
+									<input type="file" name="image" id="image" required>
+									<br>
+									<button type="submit" class="reg-Button">Register</button>
+									<br>
+								</fieldset>
+							</form>
+						</div>
+					</div>
+                    
+
+                </div>
+            </div>
+
+{% endblock %}
